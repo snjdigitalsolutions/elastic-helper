@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.snjdigitalsolutions</groupId>
-    <artifactId>elastic</artifactId>
+    <artifactId>elastichelper</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>elastic-exp</name>
+    <name>elastic</name>
     <description>elastic</description>
     <properties>
         <java.version>17</java.version>
