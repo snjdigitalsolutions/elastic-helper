@@ -1,6 +1,7 @@
 package com.snjdigitalsolutions.elastic.action;
 
 import com.snjdigitalsolutions.elastic.AbstractTest;
+import com.snjdigitalsolutions.elastic.client.ElasticClient;
 import com.snjdigitalsolutions.elastic.document.EmailDocument;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,7 @@ class DocumentIndexActionTest extends AbstractTest {
     void testIndexing()
     {
         //Arrange
+        DocumentIndexAction documentIndexAction = new DocumentIndexAction(new ElasticClient(apikey, url, port, certfile));
         EmailDocument document = new EmailDocument();
         document.setTo("john@testing.com");
         document.setFrom("jamey@theparhams.net");

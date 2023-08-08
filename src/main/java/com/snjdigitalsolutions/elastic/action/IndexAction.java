@@ -3,12 +3,9 @@ package com.snjdigitalsolutions.elastic.action;
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import com.snjdigitalsolutions.elastic.client.ElasticClient;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.Optional;
 
-@Component
 @RequiredArgsConstructor
 public class IndexAction implements Action {
 

@@ -14,13 +14,14 @@ class ElasticClientTest extends AbstractTest {
     public void verifyNoFailuresCreatingClient()
     {
         //Arrange
-        ElasticsearchClient client = elasticClient.getClient();
+        ElasticClient client = new ElasticClient(apikey, url, port, certfile);
 
         //Act
-        boolean closed = elasticClient.closeClient();
+        ElasticsearchClient elasticClient = client.getClient();
+        boolean closed = client.closeClient();
 
         //Assert
-        assertNotNull(client);
+        assertNotNull(elasticClient);
         assertTrue(closed);
     }
 
