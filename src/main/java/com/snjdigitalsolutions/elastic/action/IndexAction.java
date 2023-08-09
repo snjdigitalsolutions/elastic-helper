@@ -57,7 +57,13 @@ public class IndexAction implements Action {
     @Override
     public boolean close()
     {
-        return elasticClient.closeClient();
+        boolean success = false;
+        if (elasticClient.closeClient())
+        {
+            client = null;
+            success = true;
+        }
+        return success;
     }
 
 }
