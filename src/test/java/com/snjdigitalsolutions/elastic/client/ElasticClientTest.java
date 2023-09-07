@@ -4,6 +4,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import com.snjdigitalsolutions.elastic.AbstractTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
