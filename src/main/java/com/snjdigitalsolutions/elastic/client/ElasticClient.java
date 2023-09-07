@@ -7,29 +7,24 @@ import co.elastic.clients.transport.TransportUtils;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.message.BasicHeader;
 import org.elasticsearch.client.RestClient;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.net.ssl.SSLContext;
 import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 
-@Component
+@RequiredArgsConstructor
 public class ElasticClient {
 
-    @Value("${elastic.apikey}")
-    private String apiKey;
-    @Value("${elastic.url}")
-    private String url;
-    @Value("${elastic.port}")
-    private String port;
-    @Value("${elastic.certfile}")
-    private String httpCertFile;
+    private final String apiKey;
+    private final String url;
+    private final String port;
+    private final String httpCertFile;
 
     private RestClient restClient;
     private ElasticsearchTransport transport;

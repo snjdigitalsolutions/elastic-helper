@@ -4,6 +4,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import com.snjdigitalsolutions.elastic.AbstractTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,13 +15,14 @@ class ElasticClientTest extends AbstractTest {
     public void verifyNoFailuresCreatingClient()
     {
         //Arrange
-        ElasticsearchClient client = elasticClient.getClient();
+        ElasticClient client = new ElasticClient(apikey, url, port, certfile);
 
         //Act
-        boolean closed = elasticClient.closeClient();
+        ElasticsearchClient elasticClient = client.getClient();
+        boolean closed = client.closeClient();
 
         //Assert
-        assertNotNull(client);
+        assertNotNull(elasticClient);
         assertTrue(closed);
     }
 
