@@ -1,0 +1,4 @@
+test.apikey=<your elastic API key>
+test.url=<url of host>
+test.port=<elastic port>
+test.certfile=<path to cert file>

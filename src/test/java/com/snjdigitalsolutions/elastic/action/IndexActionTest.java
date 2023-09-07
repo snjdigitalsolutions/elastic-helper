@@ -1,6 +1,7 @@
 package com.snjdigitalsolutions.elastic.action;
 
 import com.snjdigitalsolutions.elastic.AbstractTest;
+import com.snjdigitalsolutions.elastic.client.ElasticClient;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,8 @@ class IndexActionTest extends AbstractTest {
     public void indexExistsFalse() throws Exception
     {
         //Arrange
+        ElasticClient client = new ElasticClient(apikey, url, port, certfile);
+        IndexAction indexAction = new IndexAction(client);
         indexAction.open();
 
         //Act
@@ -31,6 +34,8 @@ class IndexActionTest extends AbstractTest {
     public void createIndex() throws Exception
     {
         //Arrange
+        ElasticClient client = new ElasticClient(apikey, url, port, certfile);
+        IndexAction indexAction = new IndexAction(client);
         indexAction.open();
 
         //Act
@@ -45,6 +50,8 @@ class IndexActionTest extends AbstractTest {
     public void indexExistsTrue() throws Exception
     {
         //Arrange
+        ElasticClient client = new ElasticClient(apikey, url, port, certfile);
+        IndexAction indexAction = new IndexAction(client);
         indexAction.open();
 
         //Act
@@ -59,6 +66,8 @@ class IndexActionTest extends AbstractTest {
     public void deleteIndex() throws Exception
     {
         //Arrange
+        ElasticClient client = new ElasticClient(apikey, url, port, certfile);
+        IndexAction indexAction = new IndexAction(client);
         indexAction.open();
         String indexName = "test_index";
 
@@ -70,6 +79,7 @@ class IndexActionTest extends AbstractTest {
         assertTrue(success);
         assertFalse(exists);
     }
+
 
 
 }

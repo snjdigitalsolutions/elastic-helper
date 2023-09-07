@@ -5,6 +5,4 @@ public interface Action {
     boolean open();
     boolean close();
 
-
-
 }

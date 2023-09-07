@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.Optional;
 
-@Component
 @RequiredArgsConstructor
 public class IndexAction implements Action {
 
@@ -60,7 +59,13 @@ public class IndexAction implements Action {
     @Override
     public boolean close()
     {
-        return elasticClient.closeClient();
+        boolean success = false;
+        if (elasticClient.closeClient())
+        {
+            client = null;
+            success = true;
+        }
+        return success;
     }
 
 }
