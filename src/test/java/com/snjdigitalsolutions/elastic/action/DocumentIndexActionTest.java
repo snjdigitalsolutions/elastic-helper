@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DocumentIndexActionTest extends AbstractTest {
 
     @Test
-    void testIndexing()
+    void testIndexDocument()
     {
         //Arrange
         DocumentIndexAction documentIndexAction = new DocumentIndexAction(new ElasticClient(apikey, url, port, certfile));
@@ -34,7 +34,7 @@ class DocumentIndexActionTest extends AbstractTest {
     }
 
     @Test
-    void testIndexingPipeline()
+    void testIndexDocumentWithgPipeline()
     {
         //Arrange
         DocumentIndexAction documentIndexAction = new DocumentIndexAction(new ElasticClient(apikey, url, port, certfile));
@@ -44,7 +44,7 @@ class DocumentIndexActionTest extends AbstractTest {
 
         //Act
         assertTrue(documentIndexAction.open());
-        boolean success = documentIndexAction.indexDocument(pipelineDocument, "pipeline-test", "example-pipeline");
+        boolean success = documentIndexAction.indexDocumentWithPipeline(pipelineDocument, "pipeline-test", "example-pipeline");
 
         //Assert
         assertTrue(success);

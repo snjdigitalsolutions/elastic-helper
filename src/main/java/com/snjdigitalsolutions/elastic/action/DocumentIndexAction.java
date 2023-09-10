@@ -5,7 +5,6 @@ import co.elastic.clients.elasticsearch.core.IndexRequest;
 import co.elastic.clients.elasticsearch.core.IndexResponse;
 import com.snjdigitalsolutions.elastic.client.ElasticClient;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
@@ -39,7 +38,7 @@ public class DocumentIndexAction implements Action {
         return success;
     }
 
-    public boolean indexDocument(Object indexableDocument, String indexName, String pipeline)
+    public boolean indexDocumentWithPipeline(Object indexableDocument, String indexName, String pipeline)
     {
         boolean success = false;
         try

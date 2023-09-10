@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class IndexActionTest extends AbstractTest {
 
-
     @Test
     @Order(1)
     public void indexExistsFalse() throws Exception
