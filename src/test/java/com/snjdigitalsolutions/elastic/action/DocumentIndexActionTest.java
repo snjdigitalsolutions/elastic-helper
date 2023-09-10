@@ -3,6 +3,7 @@ package com.snjdigitalsolutions.elastic.action;
 import com.snjdigitalsolutions.elastic.AbstractTest;
 import com.snjdigitalsolutions.elastic.client.ElasticClient;
 import com.snjdigitalsolutions.elastic.document.EmailDocument;
+import com.snjdigitalsolutions.elastic.document.PipelineDocument;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -26,6 +27,24 @@ class DocumentIndexActionTest extends AbstractTest {
         //Act
         assertTrue(documentIndexAction.open());
         boolean success = documentIndexAction.indexDocument(document, "email_filter");
+
+        //Assert
+        assertTrue(success);
+        documentIndexAction.close();
+    }
+
+    @Test
+    void testIndexingPipeline()
+    {
+        //Arrange
+        DocumentIndexAction documentIndexAction = new DocumentIndexAction(new ElasticClient(apikey, url, port, certfile));
+        PipelineDocument pipelineDocument = new PipelineDocument();
+        pipelineDocument.setName("SusieQ");
+        pipelineDocument.setSocial("987-65-4321");
+
+        //Act
+        assertTrue(documentIndexAction.open());
+        boolean success = documentIndexAction.indexDocument(pipelineDocument, "pipeline-test", "example-pipeline");
 
         //Assert
         assertTrue(success);

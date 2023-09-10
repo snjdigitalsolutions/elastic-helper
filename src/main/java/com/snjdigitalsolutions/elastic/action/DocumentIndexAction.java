@@ -1,6 +1,7 @@
 package com.snjdigitalsolutions.elastic.action;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch.core.IndexRequest;
 import co.elastic.clients.elasticsearch.core.IndexResponse;
 import com.snjdigitalsolutions.elastic.client.ElasticClient;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,36 @@ public class DocumentIndexAction implements Action {
                     .index(indexName)
                     .document(indexableDocument)
             );
+            if (!response.id().isEmpty())
+            {
+                success = true;
+            }
+        } catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return success;
+    }
 
-            success = true;
+    public boolean indexDocument(Object indexableDocument, String indexName, String pipeline)
+    {
+        boolean success = false;
+        try
+        {
+            if (client == null)
+            {
+                throw new ClientNotOpenException("Client not opened");
+            }
+            IndexRequest indexRequest = IndexRequest.of(request -> request
+                    .index(indexName)
+                    .pipeline(pipeline)
+                    .document(indexableDocument)
+            );
+            IndexResponse response = client.index(indexRequest);
+            if (!response.id().isBlank())
+            {
+                success = true;
+            }
         } catch (IOException e)
         {
             throw new RuntimeException(e);
